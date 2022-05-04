@@ -275,7 +275,7 @@ def get_score_importances(
     random_state = check_random_state(random_state)
     base_score = score_func(features, targets)
     scores_decreases = []
-    for i in range(n_iter):
+    for _ in range(n_iter):
         scores_shuffled = compute_scores_shuffled(
             score_func=score_func,
             features=features,
