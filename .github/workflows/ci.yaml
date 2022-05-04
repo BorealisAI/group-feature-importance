@@ -35,6 +35,7 @@ jobs:
 
       - name: Install packages
         run: |
+          echo $( poetry env info --path )
           source "$( poetry env info --path )/bin/activate"
           make install
 
