@@ -1,0 +1,50 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        python-version: [ '3.9' ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Log Python info
+        run: |
+          which python
+          python --version
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install packages
+        run: |
+          poetry run make install
+
+      - name: Format
+        run: |
+          poetry run make format
+
+      - name: Lint
+        run: |
+          poetry run make lint
+
+      - name: Run tests
+        run: |
+          poetry run make test

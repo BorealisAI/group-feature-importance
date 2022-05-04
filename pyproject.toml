@@ -1,0 +1,67 @@
+[tool.poetry]
+name = "groufi"
+version = "0.0.1"
+description = "A small library to compute group feature importance"
+readme = "README.md"
+authors = ["Borealis AI"]
+homepage = "https://github.com/BorealisAI/group-feature-importance"
+repository = "https://github.com/BorealisAI/group-feature-importance"
+keywords = ["ML", "explainability", "sklearn", "feature importance"]
+
+packages = [
+    { include = "groufi", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+numpy = "^1.22.2"
+pandas = "^1.0.0"
+scikit-learn = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+black = { extras = ["jupyter"], version = "^22.3.0" }
+codecov = "^2.1.12"
+coverage = { extras = ["toml"], version = "^6.3.2" }
+flake8 = "^4.0.1"
+flake8-black = "^0.2.5"
+flake8-bugbear = "^21.11.29"
+isort = "^5.9.3"
+pre-commit = "^2.18.1"
+pylint = "^2.13.4"
+pytest = "^6.2.5"
+pytest-cov = "^3.0.0"
+jupyterlab = "^3.3.2"
+matplotlib = "^3.5.1"
+seaborn = "^0.11.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["groufi"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.pytest.ini_options]
+testpaths = "tests/"
+log_format = "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+log_level = "DEBUG"
+addopts = "--color yes --durations 10 -rf"
+# Configuration of the short test summary info https://docs.pytest.org/en/stable/usage.html#detailed-summary-report
+
+[tool.black]
+line-length = 120
+target-version = ["py38", "py39"]
+include = '\.pyi?$'
+
+[tool.pylint.FORMAT]
+max-line-length = 120
+
+[tool.isort]
+profile = "black"

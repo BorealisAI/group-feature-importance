@@ -1,0 +1,6 @@
+name: groufi
+channels:
+  - anaconda
+  - conda-forge
+dependencies:
+  - python=3.9
