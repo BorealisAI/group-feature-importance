@@ -39,15 +39,12 @@ jobs:
 
       - name: Format
         run: |
-          source "$( poetry env info --path )/bin/activate"
-          make format
+          poetry run make format
 
       - name: Lint
         run: |
-          source "$( poetry env info --path )/bin/activate"
-          make lint
+          poetry run make lint
 
       - name: Run tests
         run: |
-          source "$( poetry env info --path )/bin/activate"
-          make test
+          poetry run make test
