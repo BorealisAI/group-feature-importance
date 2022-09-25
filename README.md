@@ -1,12 +1,46 @@
 # Group feature importance
 
+<p align="center">
+   <a href="https://github.com/durandtibo/group-feature-importance/actions">
+      <img alt="CI" src="https://github.com/durandtibo/group-feature-importance/workflows/CI/badge.svg?event=push&branch=main">
+   </a>
+   <a href="https://pypi.org/project/groufi/">
+      <img alt="Python" src="https://img.shields.io/pypi/pyversions/groufi.svg">
+   </a>
+   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+      <img alt="Attribution-NonCommercial-ShareAlike 4.0 International" src="https://img.shields.io/pypi/l/groufi">
+   </a>
+   <a href="https://codecov.io/gh/durandtibo/group-feature-importance">
+      <img alt="Codecov" src="https://codecov.io/gh/durandtibo/group-feature-importance/branch/main/graph/badge.svg?token=SIW6JLTTU9">
+   </a>
+   <a href="https://github.com/psf/black">
+     <img  alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
+   </a>
+    <a href="https://twitter.com/intent/follow?screen_name=BorealisAI">
+        <img src="https://img.shields.io/twitter/follow/shields_io?style=social&logo=twitter"
+            alt="follow on Twitter">
+    </a>
+   <br/>
+</p>
+
+
 This repo contains the implementation to compute feature importance of correlated features.
+
+## Examples
+
+Some examples are available in [`examples`](examples)
 
 ## Installation
 
 ### Installing with `pip`
 
-TODO
+This repository is tested on Python 3.9, and Linux systems.
+It is recommended to install in a virtual environment to keep your system in order.
+The following command installs the latest version of the library:
+
+```shell
+pip install groufi
+```
 
 ### Installing from source
 
@@ -53,3 +87,8 @@ installation with the following command:
 ```shell
 make test
 ```
+
+## License
+
+This repository is released under the Attribution-NonCommercial-ShareAlike 4.0 International license as found in
+the [LICENSE](LICENSE) file.

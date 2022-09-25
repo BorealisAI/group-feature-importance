@@ -1,12 +1,26 @@
 [tool.poetry]
 name = "groufi"
-version = "0.0.1"
+version = "0.0.2"
 description = "A small library to compute group feature importance"
 readme = "README.md"
 authors = ["Borealis AI"]
+maintainers = ["Thibaut Durand <durand.tibo+gh@gmail.com>"]
 homepage = "https://github.com/BorealisAI/group-feature-importance"
 repository = "https://github.com/BorealisAI/group-feature-importance"
 keywords = ["ML", "explainability", "sklearn", "feature importance"]
+license = "Attribution-NonCommercial-ShareAlike 4.0 International"
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: Free for non-commercial use",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 
 packages = [
     { include = "groufi", from = "src" },
@@ -19,19 +33,17 @@ pandas = "^1.0.0"
 scikit-learn = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
-black = { extras = ["jupyter"], version = "^22.3.0" }
+black = { extras = ["jupyter"], version = "^22.8.0" }
 codecov = "^2.1.12"
-coverage = { extras = ["toml"], version = "^6.3.2" }
-flake8 = "^4.0.1"
-flake8-black = "^0.2.5"
-flake8-bugbear = "^21.11.29"
-isort = "^5.9.3"
-pre-commit = "^2.18.1"
-pylint = "^2.13.4"
-pytest = "^6.2.5"
+coverage = { extras = ["toml"], version = "^6.4.4" }
+flake8 = "^5.0.4"
+flake8-black = "^0.3.3"
+flake8-bugbear = "^22.8.23"
+isort = "^5.10.1"
+pre-commit = "^2.20.0"
+pylint = "^2.15.0"
+pytest = "^7.1.2"
 pytest-cov = "^3.0.0"
-jupyterlab = "^3.3.2"
-matplotlib = "^3.5.1"
 seaborn = "^0.11.2"
 
 [build-system]
