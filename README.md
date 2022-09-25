@@ -1,26 +1,26 @@
 # Group feature importance
 
 <p align="center">
-   <a href="https://github.com/durandtibo/group-feature-importance/actions">
+    <a href="https://github.com/durandtibo/group-feature-importance/actions">
       <img alt="CI" src="https://github.com/durandtibo/group-feature-importance/workflows/CI/badge.svg?event=push&branch=main">
-   </a>
-   <a href="https://pypi.org/project/groufi/">
-      <img alt="Python" src="https://img.shields.io/pypi/pyversions/groufi.svg">
-   </a>
-   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-      <img alt="Attribution-NonCommercial-ShareAlike 4.0 International" src="https://img.shields.io/pypi/l/groufi">
-   </a>
-   <a href="https://codecov.io/gh/durandtibo/group-feature-importance">
-      <img alt="Codecov" src="https://codecov.io/gh/durandtibo/group-feature-importance/branch/main/graph/badge.svg?token=IRVV3WC71O">
-   </a>
-   <a href="https://github.com/psf/black">
-     <img  alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
-   </a>
-    <a href="https://twitter.com/intent/follow?screen_name=BorealisAI">
-        <img src="https://img.shields.io/twitter/follow/BorealisAI?style=social&logo=twitter"
-            alt="follow on Twitter">
     </a>
-   <br/>
+    <a href="https://pypi.org/project/groufi/">
+      <img alt="Python" src="https://img.shields.io/pypi/pyversions/groufi.svg">
+    </a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+      <img alt="Attribution-NonCommercial-ShareAlike 4.0 International" src="https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg">
+    </a>
+    <a href="https://codecov.io/gh/durandtibo/group-feature-importance">
+      <img alt="Codecov" src="https://codecov.io/gh/durandtibo/group-feature-importance/branch/main/graph/badge.svg?token=IRVV3WC71O">
+    </a>
+    <a href="https://github.com/psf/black">
+     <img  alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
+    </a>
+    <br/>
+    <a href="https://twitter.com/intent/follow?screen_name=BorealisAI">
+        <img src="https://img.shields.io/twitter/follow/BorealisAI?style=social&logo=twitter" alt="follow on Twitter">
+    </a>
+    <br/>
 </p>
 
 
