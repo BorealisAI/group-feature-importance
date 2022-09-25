@@ -11,7 +11,7 @@
       <img alt="Attribution-NonCommercial-ShareAlike 4.0 International" src="https://img.shields.io/pypi/l/groufi">
    </a>
    <a href="https://codecov.io/gh/durandtibo/group-feature-importance">
-      <img alt="Codecov" src="https://codecov.io/gh/durandtibo/group-feature-importance/branch/main/graph/badge.svg?token=SIW6JLTTU9">
+      <img alt="Codecov" src="https://codecov.io/gh/durandtibo/group-feature-importance/branch/main/graph/badge.svg?token=IRVV3WC71O">
    </a>
    <a href="https://github.com/psf/black">
      <img  alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
