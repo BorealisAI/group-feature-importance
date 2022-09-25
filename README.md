@@ -1,6 +1,9 @@
 # Group feature importance
 
 <p align="center">
+    <a href="https://pypi.org/project/groufi/">
+      <img alt="version" src="https://pypip.in/version/groufi/badge.svg">
+    </a>
     <a href="https://github.com/BorealisAI/group-feature-importance/actions">
       <img alt="CI" src="https://github.com/BorealisAI/group-feature-importance/workflows/CI/badge.svg?event=push&branch=main">
     </a>
