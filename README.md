@@ -5,6 +5,9 @@
       <img alt="CI" src="https://github.com/BorealisAI/group-feature-importance/workflows/CI/badge.svg?event=push&branch=main">
     </a>
     <a href="https://pypi.org/project/groufi/">
+      <img alt="PYPI version" src="https://img.shields.io/pypi/v/groufi">
+    </a>
+    <a href="https://pypi.org/project/groufi/">
       <img alt="Python" src="https://img.shields.io/pypi/pyversions/groufi.svg">
     </a>
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
