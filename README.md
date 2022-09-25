@@ -17,7 +17,7 @@
      <img  alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
    </a>
     <a href="https://twitter.com/intent/follow?screen_name=BorealisAI">
-        <img src="https://img.shields.io/twitter/follow/shields_io?style=social&logo=twitter"
+        <img src="https://img.shields.io/twitter/follow/BorealisAI?style=social&logo=twitter"
             alt="follow on Twitter">
     </a>
    <br/>
