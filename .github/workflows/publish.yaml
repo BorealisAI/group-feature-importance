@@ -3,6 +3,7 @@ on:
   push:
     tags:
       - "v*.*.*"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,4 +13,4 @@ jobs:
         env:
           GROUFI_PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
-          make publish
+          poetry run make publish
