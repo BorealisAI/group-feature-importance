@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "groufi"
-version = "0.0.2"
+version = "0.0.3"
 description = "A small library to compute group feature importance"
 readme = "README.md"
 authors = ["Borealis AI"]
