@@ -116,7 +116,9 @@ def test_group_permutation_importance_different_random_states(estimator: BaseEst
 
 
 def test_create_correlated_groups():
-    assert create_correlated_groups(correlation=np.array([[1, 0.3, 0.8], [0.1, 1, 0.1], [0.8, 0.3, 1]])) == (
+    assert create_correlated_groups(
+        correlation=np.array([[1, 0.3, 0.8], [0.1, 1, 0.1], [0.8, 0.3, 1]])
+    ) == (
         (0, 2),
         (1,),
         (0, 2),
@@ -128,7 +130,9 @@ def test_create_correlated_groups_independent():
 
 
 def test_create_correlated_groups_with_nan():
-    assert create_correlated_groups(correlation=np.array([[1, 0.3, np.nan], [0.1, 1, 0.1], [0.8, 0.3, np.nan]])) == (
+    assert create_correlated_groups(
+        correlation=np.array([[1, 0.3, np.nan], [0.1, 1, 0.1], [0.8, 0.3, np.nan]])
+    ) == (
         (0,),
         (1,),
         (0,),
@@ -152,7 +156,9 @@ def test_create_correlated_groups_incorrect_shape():
 
 def test_show_correlated_groups(caplog):
     with caplog.at_level(logging.DEBUG):
-        show_correlated_groups(((0, 2), (1,), (0, 2), tuple()), ["feature1", "feature2", "feature3", "feature4"])
+        show_correlated_groups(
+            ((0, 2), (1,), (0, 2), tuple()), ["feature1", "feature2", "feature3", "feature4"]
+        )
         assert len(caplog.messages) == 4
 
 
@@ -167,7 +173,9 @@ def test_show_correlated_groups_incorrect_length():
 
 
 def test_iter_shuffled():
-    arrays = [array.copy() for array in iter_shuffled(np.arange(15).reshape((3, 5)), ((0, 2), (1,)))]
+    arrays = [
+        array.copy() for array in iter_shuffled(np.arange(15).reshape((3, 5)), ((0, 2), (1,)))
+    ]
     assert all(array.shape == (3, 5) for array in arrays)
 
 
@@ -177,7 +185,9 @@ def test_iter_shuffled_mock():
 
     rng_mock = Mock(shuffle=shuffle_mock)
     with patch("groufi.group_permutation.check_random_state", Mock(return_value=rng_mock)):
-        arrays = [array.copy() for array in iter_shuffled(np.arange(15).reshape((3, 5)), ((0, 2), (1,)))]
+        arrays = [
+            array.copy() for array in iter_shuffled(np.arange(15).reshape((3, 5)), ((0, 2), (1,)))
+        ]
         assert np.array_equal(
             arrays[0],
             np.array(

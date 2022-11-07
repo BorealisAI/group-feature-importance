@@ -93,7 +93,9 @@ def group_permutation_importance(
     ).sort_values(by=["Feature Importance"], ascending=False)
 
 
-def create_correlated_groups(correlation: np.ndarray, threshold: float = 0.75) -> Tuple[Tuple[int, ...], ...]:
+def create_correlated_groups(
+    correlation: np.ndarray, threshold: float = 0.75
+) -> Tuple[Tuple[int, ...], ...]:
     r"""Creates the groups of correlated features.
 
     Note: NaN is interpreted as no correlation between the two variables.
@@ -125,9 +127,13 @@ def create_correlated_groups(correlation: np.ndarray, threshold: float = 0.75) -
         ((0, 2), (1,), (0, 2))
     """
     if correlation.ndim != 2:
-        raise ValueError(f"`correlation` has to be 2 dimensional array (received: {correlation.ndim})")
+        raise ValueError(
+            f"`correlation` has to be 2 dimensional array (received: {correlation.ndim})"
+        )
     if correlation.shape[0] != correlation.shape[1]:
-        raise ValueError(f"Incorrect shape. `correlation` has to be a squared matrix (received: {correlation.shape})")
+        raise ValueError(
+            f"Incorrect shape. `correlation` has to be a squared matrix (received: {correlation.shape})"
+        )
     indices = []
     for i in range(correlation.shape[0]):
         indices.append(tuple(np.flatnonzero(correlation[i] >= threshold).tolist()))
@@ -160,7 +166,9 @@ def show_correlated_groups(groups: Sequence[Sequence[int]], names: Sequence[str]
             (02) feat3
     """
     if len(groups) != len(names):
-        raise ValueError(f"`groups` ({len(groups)}) and `names` ({len(names)}) should have the same length")
+        raise ValueError(
+            f"`groups` ({len(groups)}) and `names` ({len(names)}) should have the same length"
+        )
     for i, group in enumerate(groups):
         corr_names = "\n".join([f"\t({j:02d}) {names[j]}" for j in group])
         logger.debug(f"Group ({i:02d}) {names[i]}:\n{corr_names}")
@@ -225,8 +233,12 @@ def compute_scores_shuffled(
         ``numpy.array`` of shape ``(feature_size,)``: The score associated to each feature when its
             associated group is shuffled.
     """
-    iter_shuffled_features = iter_shuffled(features=features, groups=groups, random_state=random_state)
-    return np.array([score_func(shuffled_features, targets) for shuffled_features in iter_shuffled_features])
+    iter_shuffled_features = iter_shuffled(
+        features=features, groups=groups, random_state=random_state
+    )
+    return np.array(
+        [score_func(shuffled_features, targets) for shuffled_features in iter_shuffled_features]
+    )
 
 
 def get_score_importances(
