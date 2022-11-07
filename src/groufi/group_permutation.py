@@ -34,23 +34,24 @@ def group_permutation_importance(
 
     Args:
         estimator: Specifies a sklearn estimator with a ``predict`` method.
-        features (``numpy.ndarray`` of shape ``(num_examples, feature_size)``): Specifies the matrix of features.
+        features (``numpy.ndarray`` of shape ``(num_examples, feature_size)``): Specifies the
+            matrix of features.
         feature_names: Specifies the names of each feature to make result interpretation easier.
         threshold (float, optional): Specifies the threshold used to create the groups.
             Two features are considered correlated if the correlation value is higher
             than the threshold. Default: ``0.75``
         n_iter (int, optional): Specifies the number of iterations of the basic algorithm.
-            Each iteration starting from a different random seed to create the feature permutation.
-            Default: ``20``
-        random_state (``None``, int or ``RandomState``, optional): see ``sklearn.utils.check_random_state``
-            documentation. Default: ``None``
+            Each iteration starting from a different random seed to create the feature
+            permutation. Default: ``20``
+        random_state (``None``, int or ``RandomState``, optional): see
+            ``sklearn.utils.check_random_state`` documentation. Default: ``None``
 
     Returns:
         ``pandas.DataFrame``: A DataFrame with the feature importance of each feature.
-            The index of the DataFrame is the feature names sorted by decreasing order of feature importance value.
-            The DataFrame has two columns: ``'Feature Importance'`` and ``'group'``.
-            ``'Feature Importance'`` contains the estimated feature importance whereas ``'group'``
-            contains the correlated features to the current feature.
+            The index of the DataFrame is the feature names sorted by decreasing order of feature
+            importance value. The DataFrame has two columns: ``'Feature Importance'`` and
+            ``'group'``. ``'Feature Importance'`` contains the estimated feature importance
+            whereas ``'group'`` contains the correlated features to the current feature.
 
     Example:
 
@@ -93,7 +94,9 @@ def group_permutation_importance(
     ).sort_values(by=["Feature Importance"], ascending=False)
 
 
-def create_correlated_groups(correlation: np.ndarray, threshold: float = 0.75) -> Tuple[Tuple[int, ...], ...]:
+def create_correlated_groups(
+    correlation: np.ndarray, threshold: float = 0.75
+) -> Tuple[Tuple[int, ...], ...]:
     r"""Creates the groups of correlated features.
 
     Note: NaN is interpreted as no correlation between the two variables.
@@ -105,12 +108,12 @@ def create_correlated_groups(correlation: np.ndarray, threshold: float = 0.75) -
             than the threshold. Default: ``0.75``
 
     Returns:
-        tuple: The group of correlated features for each feature. It is represented as a tuple of tuples.
-            The outer tuple indicates each feature, and the inner tuples indicates the correlated groups.
-            If the output is the variable ``output``, ``output[i]`` indicates the group of features
-            correlated  to the ``i``-th feature.``output[i][j]`` is the ``j``-th correlated feature
-            to the ``i``-th feature. Note that the current feature is always included in the group
-            of correlated features.
+        tuple: The group of correlated features for each feature. It is represented as a tuple
+            of tuples. The outer tuple indicates each feature, and the inner tuples indicates
+            the correlated groups. If the output is the variable ``output``, ``output[i]``
+            indicates the group of features correlated  to the ``i``-th feature.``output[i][j]``
+            is the ``j``-th correlated feature to the ``i``-th feature. Note that the current
+            feature is always included in the group of correlated features.
 
     Raises:
         ValueError if ``correlation`` is not a squared matrix.
@@ -125,9 +128,14 @@ def create_correlated_groups(correlation: np.ndarray, threshold: float = 0.75) -
         ((0, 2), (1,), (0, 2))
     """
     if correlation.ndim != 2:
-        raise ValueError(f"`correlation` has to be 2 dimensional array (received: {correlation.ndim})")
+        raise ValueError(
+            f"`correlation` has to be 2 dimensional array (received: {correlation.ndim})"
+        )
     if correlation.shape[0] != correlation.shape[1]:
-        raise ValueError(f"Incorrect shape. `correlation` has to be a squared matrix (received: {correlation.shape})")
+        raise ValueError(
+            "Incorrect shape. `correlation` has to be a squared matrix "
+            f"(received: {correlation.shape})"
+        )
     indices = []
     for i in range(correlation.shape[0]):
         indices.append(tuple(np.flatnonzero(correlation[i] >= threshold).tolist()))
@@ -138,8 +146,8 @@ def show_correlated_groups(groups: Sequence[Sequence[int]], names: Sequence[str]
     r"""Shows the correlated groups.
 
     Args:
-        groups: Specifies the groups of correlated features. See the output of ``create_correlated_groups``
-            for more information about the structure.
+        groups: Specifies the groups of correlated features. See the output of
+            ``create_correlated_groups`` for more information about the structure.
         names: Specifies the names of each feature.
 
     Raises:
@@ -160,7 +168,9 @@ def show_correlated_groups(groups: Sequence[Sequence[int]], names: Sequence[str]
             (02) feat3
     """
     if len(groups) != len(names):
-        raise ValueError(f"`groups` ({len(groups)}) and `names` ({len(names)}) should have the same length")
+        raise ValueError(
+            f"`groups` ({len(groups)}) and `names` ({len(names)}) should have the same length"
+        )
     for i, group in enumerate(groups):
         corr_names = "\n".join([f"\t({j:02d}) {names[j]}" for j in group])
         logger.debug(f"Group ({i:02d}) {names[i]}:\n{corr_names}")
@@ -178,12 +188,12 @@ def iter_shuffled(
     if you want to use multiple of them at the same time, make copies.
 
     Args:
-        features (``numpy.ndarray`` of shape ``(num_examples, feature_size)``): Specifies the matrix of features
-            to shuffle.
-        groups: Specifies the groups of correlated features. See the output of ``create_correlated_groups``
-            for more information about the structure.
-        random_state (``None``, int or ``RandomState``, optional): see ``sklearn.utils.check_random_state``
-            documentation. Default: ``None``
+        features (``numpy.ndarray`` of shape ``(num_examples, feature_size)``): Specifies the
+            matrix of features to shuffle.
+        groups: Specifies the groups of correlated features. See the output of
+            ``create_correlated_groups`` for more information about the structure.
+        random_state (``None``, int or ``RandomState``, optional): see
+            ``sklearn.utils.check_random_state`` documentation. Default: ``None``
 
     Returns:
         Each item in the iterable is a ``numpy.ndarray`` of shape ``(num_examples, feature_size)``.
@@ -211,22 +221,27 @@ def compute_scores_shuffled(
     r"""Computes the scores associated where the features are shuffled by group.
 
     Args:
-        score_func (callable): Specifies the callable used to compute the score of the predictions done
-            with shuffled features.
-        features (``numpy.array`` of shape ``(num_examples, feature_size)``): Specifies the matrix of features.
-        targets (``numpy.array`` of shape ``(num_examples, prediction_size)``): Specifies the matrix of
-            targets.
-        groups: Specifies the groups of correlated features. See the output of ``create_correlated_groups``
-            for more information about the structure.
-        random_state (``None``, int or ``RandomState``, optional): see ``sklearn.utils.check_random_state``
-            documentation. Default: ``None``
+        score_func (callable): Specifies the callable used to compute the score of the
+            predictions done with shuffled features.
+        features (``numpy.array`` of shape ``(num_examples, feature_size)``): Specifies the
+            matrix of features.
+        targets (``numpy.array`` of shape ``(num_examples, prediction_size)``): Specifies the
+            matrix of targets.
+        groups: Specifies the groups of correlated features. See the output of
+            ``create_correlated_groups`` for more information about the structure.
+        random_state (``None``, int or ``RandomState``, optional): see
+            ``sklearn.utils.check_random_state`` documentation. Default: ``None``
 
     Returns:
-        ``numpy.array`` of shape ``(feature_size,)``: The score associated to each feature when its
-            associated group is shuffled.
+        ``numpy.array`` of shape ``(feature_size,)``: The score associated to each feature
+            when its associated group is shuffled.
     """
-    iter_shuffled_features = iter_shuffled(features=features, groups=groups, random_state=random_state)
-    return np.array([score_func(shuffled_features, targets) for shuffled_features in iter_shuffled_features])
+    iter_shuffled_features = iter_shuffled(
+        features=features, groups=groups, random_state=random_state
+    )
+    return np.array(
+        [score_func(shuffled_features, targets) for shuffled_features in iter_shuffled_features]
+    )
 
 
 def get_score_importances(
@@ -240,17 +255,18 @@ def get_score_importances(
     """Computes the score importance.
 
     Args:
-        score_func (callable): Specifies the callable used to compute the score of the predictions done
-            with shuffled features.
-        features (``numpy.array`` of shape ``(num_examples, feature_size)``): Specifies the matrix of features.
-        targets (``numpy.array`` of shape ``(num_examples, prediction_size)``): Specifies the matrix of
-            targets.
-        groups: Specifies the groups of correlated features. See the output of ``create_correlated_groups``
-            for more information about the structure.
+        score_func (callable): Specifies the callable used to compute the score of the
+            predictions done with shuffled features.
+        features (``numpy.array`` of shape ``(num_examples, feature_size)``): Specifies the
+            matrix of features.
+        targets (``numpy.array`` of shape ``(num_examples, prediction_size)``): Specifies the
+            matrix of targets.
+        groups: Specifies the groups of correlated features. See the output of
+            ``create_correlated_groups`` for more information about the structure.
         n_iter (int, optional): Specifies the number of iterations of the basic algorithm.
             Each iteration starting from a different random seed. Default: ``20``
-        random_state (``None``, int or ``RandomState``, optional): see ``sklearn.utils.check_random_state``
-            documentation. Default: ``None``
+        random_state (``None``, int or ``RandomState``, optional): see
+            ``sklearn.utils.check_random_state`` documentation. Default: ``None``
 
     Returns:
         ``(base_score, score_decreases)`` tuple with the base score and score decreases

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "groufi"
-version = "0.0.2"
+version = "0.0.3"
 description = "A small library to compute group feature importance"
 readme = "README.md"
 authors = ["Borealis AI"]
@@ -68,12 +68,12 @@ addopts = "--color yes --durations 10 -rf"
 # Configuration of the short test summary info https://docs.pytest.org/en/stable/usage.html#detailed-summary-report
 
 [tool.black]
-line-length = 120
+line-length = 100
 target-version = ["py38", "py39"]
 include = '\.pyi?$'
 
 [tool.pylint.FORMAT]
-max-line-length = 120
+max-line-length = 100
 
 [tool.isort]
 profile = "black"
