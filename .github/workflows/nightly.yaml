@@ -1,11 +1,7 @@
-name: CI
+name: nightly
 on:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 5 * * *' # run at 5 AM UTC
   workflow_dispatch:  # to trigger manually
 
 jobs:
@@ -45,14 +41,3 @@ jobs:
       - name: Run tests
         run: |
           poetry run make test
-
-      - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.9' && github.repository == 'BorealisAI/group-feature-importance' && (github.event_name == 'push' || github.event_name == 'pull_request')
-        uses: codecov/codecov-action@v2
-        with:
-          file: ./coverage.xml
-          # Ignore codecov failures as the codecov server is not
-          # very reliable but we don't want to report a failure
-          # in the github UI just because the coverage report failed to
-          # be published.
-          fail_ci_if_error: false
