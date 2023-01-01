@@ -4,6 +4,16 @@ default_language_version:
 default_stages: [ commit ]
 
 repos:
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.3.1
+    hooks:
+      - id: pyupgrade
+        args: [--py38-plus]
+  - repo: https://github.com/PyCQA/docformatter
+    rev: v1.5.1
+    hooks:
+      - id: docformatter
+        args: [ --in-place ]
   - repo: https://github.com/pycqa/isort
     rev: 5.11.4
     hooks:
@@ -20,9 +30,15 @@ repos:
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
+      - id: check-toml
       - id: sort-simple-yaml
       - id: check-yaml
         args: [ --unsafe ]
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.9.0  # Use the ref you want to point at
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-use-type-annotations
   - repo: https://github.com/pycqa/flake8
     rev: 6.0.0
     hooks:

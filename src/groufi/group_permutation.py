@@ -30,7 +30,8 @@ def group_permutation_importance(
     n_iter: int = 20,
     random_state: Union[None, int, RandomState] = None,
 ) -> pd.DataFrame:
-    r"""Computes the permutation feature importance by using group of correlated features.
+    r"""Computes the permutation feature importance by using group of correlated
+    features.
 
     Args:
         estimator: Specifies a sklearn estimator with a ``predict`` method.
