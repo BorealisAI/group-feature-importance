@@ -20,6 +20,12 @@
      <img  alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
     </a>
     <br/>
+    <a href="https://pepy.tech/project/groufi">
+        <img  alt="Downloads" src="https://static.pepy.tech/badge/groufi">
+    </a>
+    <a href="https://pepy.tech/project/groufi">
+        <img  alt="Monthly downloads" src="https://static.pepy.tech/badge/groufi/month">
+    </a>
     <a href="https://twitter.com/intent/follow?screen_name=BorealisAI">
         <img src="https://img.shields.io/twitter/follow/BorealisAI?style=social&logo=twitter" alt="follow on Twitter">
     </a>
