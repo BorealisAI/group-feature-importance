@@ -66,4 +66,4 @@ jobs:
 
       - name: Check package version
         run: |
-          python -c "import groufi; print(groufi.__version__)"
+          python -c "import groufi; print(groufi.group_permutation_importance)"
