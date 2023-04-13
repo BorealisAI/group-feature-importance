@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "groufi"
-version = "0.0.4a3"
+version = "0.0.4a5"
 description = "A small library to compute group feature importance"
 readme = "README.md"
 authors = ["Borealis AI"]
@@ -34,7 +34,6 @@ scikit-learn = "^1.0"
 
 [tool.poetry.dev-dependencies]
 black = { extras = ["jupyter"], version = "^22.10" }
-codecov = "^2.1"
 coverage = { extras = ["toml"], version = "^6.5" }
 docformatter = "^1.5"
 flake8 = "^5.0"
@@ -42,8 +41,8 @@ flake8-black = "^0.3"
 flake8-bugbear = "^22.12"
 isort = "^5.10"
 pre-commit = "^2.20"
-pylint = "^2.15"
-pytest = "^7.2"
+pylint = "^2.17"
+pytest = "^7.3"
 pytest-cov = "^4.0"
 pytest-timeout = "^2.1"
 seaborn = "^0.11"
