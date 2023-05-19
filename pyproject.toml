@@ -38,7 +38,7 @@ coverage = { extras = ["toml"], version = "^6.5" }
 docformatter = "^1.5"
 flake8 = "^5.0"
 flake8-black = "^0.3"
-flake8-bugbear = "^22.12"
+flake8-bugbear = "^23.3"
 isort = "^5.10"
 pre-commit = "^2.20"
 pylint = "^2.17"
