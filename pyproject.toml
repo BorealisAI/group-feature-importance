@@ -34,7 +34,7 @@ scikit-learn = "^1.0"
 
 [tool.poetry.dev-dependencies]
 black = { extras = ["jupyter"], version = "^22.10" }
-coverage = { extras = ["toml"], version = "^6.5" }
+coverage = { extras = ["toml"], version = "^7.2" }
 docformatter = "^1.5"
 flake8 = "^5.0"
 flake8-black = "^0.3"
