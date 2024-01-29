@@ -46,7 +46,7 @@ pylint = "^3.0"
 pytest = "^7.3"
 pytest-cov = "^4.0"
 pytest-timeout = "^2.1"
-seaborn = "^0.12"
+seaborn = "^0.13"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
